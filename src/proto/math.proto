@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package xrpc.math;
+
+enum MathOperation {
+  Add = 0;
+  Subtract = 1;
+  Multiply = 2;
+  Divide = 3;
+}
+
+message Arguments {
+  float lhs = 1;
+  float rhs = 2;
+}
+
+message MathRequest {
+  Arguments arguments = 1;
+  MathOperation operation = 2;
+}
+
+message MathResponse {
+  optional float result = 1;        // Данные пользователя
+}
+
+service MathService {
+  rpc CalculateMath (MathRequest) returns (MathResponse);
+}
