@@ -2,7 +2,6 @@ import os
 import sys
 import subprocess
 import shutil
-import glob
 import argparse
 
 try:
@@ -88,6 +87,8 @@ def generate(pb_folder: str, root: str, header_out: str, target_folder: str):
             
 
 def generate_grpc(pb_folder: str, root: str, header_out: str, target_folder: str):
+    import_folder_relative = f'.{os.path.sep}{os.path.relpath(pb_folder, root)}'
+    print(f'- imports folder: {import_folder_relative}')
     print(f'- found {colored("grpc", "green")} directory. generating grpc files')
     grpc_plugin = find_executable_path('grpc_cpp_plugin')
     pb_folder = os.path.join(pb_folder, 'grpc')
@@ -98,6 +99,7 @@ def generate_grpc(pb_folder: str, root: str, header_out: str, target_folder: str
             print(f'- generating file {colored(protofile, "green")}')
             protoc_result = subprocess.run(
                 f'protoc --proto_path {pb_folder_relative} '
+                f'--proto_path {import_folder_relative} '
                 f'--grpc_out={target_folder} --plugin=protoc-gen-grpc={grpc_plugin} '
                 f'{os.path.join(pb_folder_relative, protofile)} '
                 f'--cpp_out={target_folder} '
