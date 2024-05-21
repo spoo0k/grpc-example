@@ -9,14 +9,16 @@
 #include <functional>
 #include <memory>
 #include <experimental/propagate_const>
+#include <xrpc-test/protobufs/math.grpc.pb.h>
 
 namespace xrpc {
-  namespace math  { class MathRequest; }
+
 
   class XClient
   {
     public:
       explicit XClient(const std::string &address, uint16_t port);
+      ~XClient();
       auto math_request(math::MathRequest) -> void;
 
     private:

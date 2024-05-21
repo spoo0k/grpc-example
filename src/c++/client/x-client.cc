@@ -3,8 +3,7 @@
 //
 
 #include <grpcpp/grpcpp.h>
-#include <xrpc/client/x-client.h>
-#include <xrpc/proto/math.grpc.pb.h>
+#include <xrpc-test/client/x-client.h>
 
 
 class xrpc::XClient::Impl
@@ -23,6 +22,8 @@ xrpc::XClient::XClient(const std::string& address,
   : m_impl(std::make_unique<Impl>(grpc::CreateChannel(address + ":" + std::to_string(port),
                                                       grpc::InsecureChannelCredentials())))
 {}
+
+xrpc::XClient::~XClient() = default;
 
 auto xrpc::XClient::math_request(math::MathRequest request) -> void
 {

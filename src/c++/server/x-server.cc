@@ -2,12 +2,11 @@
 // Created by user on 20.05.24.
 //
 
-#include <xrpc/server/x-server.h>
-#include <xrpc/proto/math.grpc.pb.h>
+#include <xrpc-test/server/x-server.h>
 #include <grpcpp/grpcpp.h>
 
 
-class xrpc::XServer::Impl : public xrpc::math::MathService::Service
+class xrpc::XServer::Impl : public math::MathService::Service
 {
   public:
     explicit Impl(std::function<std::optional<float>(const math::MathRequest&)> do_math);
@@ -34,6 +33,8 @@ grpc::Status xrpc::XServer::Impl::CalculateMath(grpc::ServerContext* context, co
 xrpc::XServer::XServer(std::function<std::optional<float>(const math::MathRequest&)> do_math)
   : m_impl(std::make_unique<Impl>(std::move(do_math)))
 {}
+
+xrpc::XServer::~XServer() = default;
 
 auto xrpc::XServer::run(const std::string& address, uint16_t port) -> void
 {

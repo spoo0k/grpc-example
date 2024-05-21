@@ -3,8 +3,8 @@
 //
 
 #include <iostream>
-#include <xrpc/proto/math.pb.h>
-#include <xrpc/server/x-server.h>
+#include <xrpc-test/server/x-server.h>
+#include <xrpc-test/protobufs/math.grpc.pb.h>
 
 
 
