@@ -1,0 +1,7 @@
+@PACKAGE_INIT@
+
+set(config_targets_file_xrpc-test-protobufs @config_targets_file@)
+
+include("${CMAKE_CURRENT_LIST_DIR}/${config_targets_file_xrpc-test-protobufs}")
+
+check_required_components(xrpc-test-protobufs)
