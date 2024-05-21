@@ -39,8 +39,8 @@ execute_process(
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-set(PROTO_HEADER_PATH_B "${CMAKE_CURRENT_SOURCE_DIR}/include/xprc-test/protobufs")
-set(PROTO_HEADER_PATH_I "include/xprc-test/protobufs")
+set(PROTO_HEADER_PATH_B "${CMAKE_CURRENT_SOURCE_DIR}/include/xrpc-test/protobufs")
+set(PROTO_HEADER_PATH_I "include/xrpc-test/protobufs")
 file(GLOB PROTO_HEADERS "${PROTO_HEADER_PATH_B}/*.h")
 file(GLOB PROTO_SOURCES "${CMAKE_CURRENT_BINARY_DIR}/*.pb.cc")
 message(STATUS "[${PROJECT_NAME}] protobuf headers: ${PROTO_HEADERS}")
