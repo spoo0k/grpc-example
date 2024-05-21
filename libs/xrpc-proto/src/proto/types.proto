@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package xproto.vt45.protobufs.types;
+
+message Vector2
+{
+  float x = 1;
+  float y = 2;
+}
+
+message Vector3
+{
+  float x = 1;
+  float y = 2;
+  float z = 3;
+}
+
+message IntVector3
+{
+  int32 x = 1;
+  int32 y = 2;
+  int32 z = 3;
+}
+
+message GeoCoordinate
+{
+  double latitude = 1;
+  double longitude = 2;
+  float altitude = 3;
+}
+
+message EulerAngles
+{
+  /// Значение крена в радианах
+  float roll = 1;
+
+  /// Значение тангажа в радианах
+  float pitch = 2;
+
+  /// Значение рыскания (курса) в радианах
+  float yaw = 3;
+}
+
+message FlightAxes
+{
+  EulerAngles euler_angles = 1;
+  float throttle = 2;
+}
